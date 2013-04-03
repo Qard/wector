@@ -1,7 +1,7 @@
 # coding: utf-8
 Gem::Specification.new do |spec|
   spec.name          = "wector"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["Stephen Belanger"]
   spec.email         = ["admin@stephenbelanger.com"]
   spec.description   = %q{
