@@ -8,5 +8,5 @@ Add `wector` to your application's Gemfile and `bundle install` or install it yo
 
 ## Usage
 		
-		vector = Wector.new([1.2, 3.4, 5.6, 7.8])
-		p vector + (vector ** 2)
+	vector = Wector.new([1.2, 3.4, 5.6, 7.8])
+	p vector + (vector ** 2)
