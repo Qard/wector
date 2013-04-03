@@ -1,5 +1,3 @@
-require "wector/version"
-
 class Wector < Array
 	def [](*args)
 		args.each do |arg|
