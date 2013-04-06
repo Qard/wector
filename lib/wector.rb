@@ -1,4 +1,8 @@
 class Wector < Array
+
+  # 
+  # wector.[]
+  # 
   def [](*args)
     args.each do |arg|
       raise "Non-numeric item" unless arg.is_a?(Integer) or arg.is_a?(Float)
@@ -372,60 +376,6 @@ class Wector < Array
   end
   
   # 
-  # wector.gcd
-  # 
-  # Arguments:
-  #   other: (Array)
-  # 
-  def gcd(other)
-    if other.is_a? Array
-      raise "Incorrect Dimensions" unless self.size == other.size
-      other = other.dup
-      self.class.new(map { |i| i.gcd other.shift })
-    elsif other.is_a?(Integer) or other.is_a?(Float)
-      self.class.new(map { |i| i.gcd other })
-    else
-      super
-    end
-  end
-  
-  # 
-  # wector.gcdlcm
-  # 
-  # Arguments:
-  #   other: (Array)
-  # 
-  def gcdlcm(other)
-    if other.is_a? Array
-      raise "Incorrect Dimensions" unless self.size == other.size
-      other = other.dup
-      self.class.new(map { |i| i.gcdlcm other.shift })
-    elsif other.is_a?(Integer) or other.is_a?(Float)
-      self.class.new(map { |i| i.gcdlcm other })
-    else
-      super
-    end
-  end
-  
-  # 
-  # wector.lcm
-  # 
-  # Arguments:
-  #   other: (Array)
-  # 
-  def lcm(other)
-    if other.is_a? Array
-      raise "Incorrect Dimensions" unless self.size == other.size
-      other = other.dup
-      self.class.new(map { |i| i.lcm other.shift })
-    elsif other.is_a?(Integer) or other.is_a?(Float)
-      self.class.new(map { |i| i.lcm other })
-    else
-      super
-    end
-  end
-  
-  # 
   # wector.quo
   # 
   # Arguments:
@@ -438,24 +388,6 @@ class Wector < Array
       self.class.new(map { |i| i.quo other.shift })
     elsif other.is_a?(Integer) or other.is_a?(Float)
       self.class.new(map { |i| i.quo other })
-    else
-      super
-    end
-  end
-  
-  # 
-  # wector.rationalize
-  # 
-  # Arguments:
-  #   other: (Array)
-  # 
-  def rationalize(other)
-    if other.is_a? Array
-      raise "Incorrect Dimensions" unless self.size == other.size
-      other = other.dup
-      self.class.new(map { |i| i.rationalize other.shift })
-    elsif other.is_a?(Integer) or other.is_a?(Float)
-      self.class.new(map { |i| i.rationalize other })
     else
       super
     end
@@ -479,24 +411,6 @@ class Wector < Array
     end
   end
   
-  # 
-  # wector.round
-  # 
-  # Arguments:
-  #   other: (Array)
-  # 
-  def round(other)
-    if other.is_a? Array
-      raise "Incorrect Dimensions" unless self.size == other.size
-      other = other.dup
-      self.class.new(map { |i| i.round other.shift })
-    elsif other.is_a?(Integer) or other.is_a?(Float)
-      self.class.new(map { |i| i.round other })
-    else
-      super
-    end
-  end
-  
   
   # 
   # wector.ceil
@@ -513,62 +427,6 @@ class Wector < Array
   end
   
   # 
-  # wector.abs2
-  # 
-  def abs2
-    self.class.new(map { |i| i.abs2 })
-  end
-  
-  # 
-  # wector.magnitude
-  # 
-  def magnitude
-    self.class.new(map { |i| i.magnitude })
-  end
-  
-  # 
-  # wector.arg
-  # 
-  def arg
-    self.class.new(map { |i| i.arg })
-  end
-  
-  # 
-  # wector.angle
-  # 
-  def angle
-    self.class.new(map { |i| i.angle })
-  end
-  
-  # 
-  # wector.phase
-  # 
-  def phase
-    self.class.new(map { |i| i.phase })
-  end
-  
-  # 
-  # wector.conj
-  # 
-  def conj
-    self.class.new(map { |i| i.conj })
-  end
-  
-  # 
-  # wector.conjugate
-  # 
-  def conjugate
-    self.class.new(map { |i| i.conjugate })
-  end
-  
-  # 
-  # wector.denominator
-  # 
-  def denominator
-    self.class.new(map { |i| i.denominator })
-  end
-  
-  # 
   # wector.even?
   # 
   def even?
@@ -580,20 +438,6 @@ class Wector < Array
   # 
   def floor
     self.class.new(map { |i| i.floor })
-  end
-  
-  # 
-  # wector.imag
-  # 
-  def imag
-    self.class.new(map { |i| i.imag })
-  end
-  
-  # 
-  # wector.imaginary
-  # 
-  def imaginary
-    self.class.new(map { |i| i.imaginary })
   end
   
   # 
@@ -618,45 +462,10 @@ class Wector < Array
   end
   
   # 
-  # wector.numerator
-  # 
-  def numerator
-    self.class.new(map { |i| i.numerator })
-  end
-  
-  # 
-  # wector.polar
-  # 
-  def polar
-    self.class.new(map { |i| i.polar })
-  end
-  
-  # 
   # wector.pred
   # 
   def pred
     self.class.new(map { |i| i.pred })
-  end
-  
-  # 
-  # wector.real
-  # 
-  def real
-    self.class.new(map { |i| i.real })
-  end
-  
-  # 
-  # wector.real?
-  # 
-  def real?
-    self.class.new(map { |i| i.real? })
-  end
-  
-  # 
-  # wector.rect
-  # 
-  def rect
-    self.class.new(map { |i| i.rect })
   end
   
   # 
@@ -673,6 +482,208 @@ class Wector < Array
     self.class.new(map { |i| i.zero? })
   end
   
+
+  # Only support 1.9+ features when available
+  v = RUBY_VERSION.split('.')
+  if v[0].to_i > 1 or v[1] > 8
+    
+    # 
+    # wector.gcd
+    # 
+    # Arguments:
+    #   other: (Array)
+    # 
+    def gcd(other)
+      if other.is_a? Array
+        raise "Incorrect Dimensions" unless self.size == other.size
+        other = other.dup
+        self.class.new(map { |i| i.gcd other.shift })
+      elsif other.is_a?(Integer) or other.is_a?(Float)
+        self.class.new(map { |i| i.gcd other })
+      else
+        super
+      end
+    end
+    
+    # 
+    # wector.gcdlcm
+    # 
+    # Arguments:
+    #   other: (Array)
+    # 
+    def gcdlcm(other)
+      if other.is_a? Array
+        raise "Incorrect Dimensions" unless self.size == other.size
+        other = other.dup
+        self.class.new(map { |i| i.gcdlcm other.shift })
+      elsif other.is_a?(Integer) or other.is_a?(Float)
+        self.class.new(map { |i| i.gcdlcm other })
+      else
+        super
+      end
+    end
+    
+    # 
+    # wector.lcm
+    # 
+    # Arguments:
+    #   other: (Array)
+    # 
+    def lcm(other)
+      if other.is_a? Array
+        raise "Incorrect Dimensions" unless self.size == other.size
+        other = other.dup
+        self.class.new(map { |i| i.lcm other.shift })
+      elsif other.is_a?(Integer) or other.is_a?(Float)
+        self.class.new(map { |i| i.lcm other })
+      else
+        super
+      end
+    end
+    
+    # 
+    # wector.rationalize
+    # 
+    # Arguments:
+    #   other: (Array)
+    # 
+    def rationalize(other)
+      if other.is_a? Array
+        raise "Incorrect Dimensions" unless self.size == other.size
+        other = other.dup
+        self.class.new(map { |i| i.rationalize other.shift })
+      elsif other.is_a?(Integer) or other.is_a?(Float)
+        self.class.new(map { |i| i.rationalize other })
+      else
+        super
+      end
+    end
+    
+    # 
+    # wector.round
+    # 
+    # Arguments:
+    #   other: (Array)
+    # 
+    def round(other)
+      if other.is_a? Array
+        raise "Incorrect Dimensions" unless self.size == other.size
+        other = other.dup
+        self.class.new(map { |i| i.round other.shift })
+      elsif other.is_a?(Integer) or other.is_a?(Float)
+        self.class.new(map { |i| i.round other })
+      else
+        super
+      end
+    end
+    
+    
+    # 
+    # wector.abs2
+    # 
+    def abs2
+      self.class.new(map { |i| i.abs2 })
+    end
+    
+    # 
+    # wector.arg
+    # 
+    def arg
+      self.class.new(map { |i| i.arg })
+    end
+    
+    # 
+    # wector.angle
+    # 
+    def angle
+      self.class.new(map { |i| i.angle })
+    end
+    
+    # 
+    # wector.conj
+    # 
+    def conj
+      self.class.new(map { |i| i.conj })
+    end
+    
+    # 
+    # wector.conjugate
+    # 
+    def conjugate
+      self.class.new(map { |i| i.conjugate })
+    end
+    
+    # 
+    # wector.denominator
+    # 
+    def denominator
+      self.class.new(map { |i| i.denominator })
+    end
+    
+    # 
+    # wector.imag
+    # 
+    def imag
+      self.class.new(map { |i| i.imag })
+    end
+    
+    # 
+    # wector.imaginary
+    # 
+    def imaginary
+      self.class.new(map { |i| i.imaginary })
+    end
+    
+    # 
+    # wector.magnitude
+    # 
+    def magnitude
+      self.class.new(map { |i| i.magnitude })
+    end
+    
+    # 
+    # wector.numerator
+    # 
+    def numerator
+      self.class.new(map { |i| i.numerator })
+    end
+    
+    # 
+    # wector.phase
+    # 
+    def phase
+      self.class.new(map { |i| i.phase })
+    end
+    
+    # 
+    # wector.polar
+    # 
+    def polar
+      self.class.new(map { |i| i.polar })
+    end
+    
+    # 
+    # wector.real
+    # 
+    def real
+      self.class.new(map { |i| i.real })
+    end
+    
+    # 
+    # wector.real?
+    # 
+    def real?
+      self.class.new(map { |i| i.real? })
+    end
+    
+    # 
+    # wector.rect
+    # 
+    def rect
+      self.class.new(map { |i| i.rect })
+    end
+    
+  end
 end
 
 # Add interface to convert arrays to vectors

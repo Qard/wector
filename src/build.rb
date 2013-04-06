@@ -5,14 +5,21 @@ operator_methods = [
 ]
 
 comparison_methods = [
-	:modulo, :coerce, :div, :divmod, :eql?, :fdiv, :gcd, :gcdlcm, :lcm, :quo,
-	:rationalize, :remainder, :round
+	:modulo, :coerce, :div, :divmod, :eql?, :fdiv, :quo, :remainder
 ]
 
 transform_methods = [
-	:ceil, :abs, :abs2, :magnitude, :arg, :angle, :phase, :conj, :conjugate,
-	:denominator, :even?, :floor, :imag, :imaginary, :integer?, :nonzero?,
-	:odd?, :numerator, :polar, :pred, :real, :real?, :rect, :truncate, :zero?
+	:ceil, :abs, :even?, :floor, :integer?, :nonzero?,
+	:odd?, :pred, :truncate, :zero?
+]
+
+new_comparison_methods = [
+	:gcd, :gcdlcm, :lcm, :rationalize, :round
+]
+
+new_transform_methods = [
+	:abs2, :arg, :angle, :conj, :conjugate, :denominator, :imag, :imaginary,
+	:magnitude, :numerator, :phase, :polar, :real, :real?, :rect
 ]
 
 operator_tests = {

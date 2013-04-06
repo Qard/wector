@@ -34,4 +34,20 @@ class BasicTest < Test::Unit::TestCase
     assert_equal (nums.<%= name %>), nums.map { |v| v.<%= name %> }
   end
   <% end %>
+
+  # Only support 1.9+ features when available
+  v = RUBY_VERSION.split('.')
+  if v[0].to_i > 1 or v[1] > 8
+    <% new_comparison_methods.each do |name| %>
+    def test_<%= name %>
+      nums = (1..100).to_a.to_wector
+      assert_equal (nums.<%= name %> nums), nums.map { |v| v.<%= name %> v }
+    end
+    <% end %><% new_transform_methods.each do |name| %>
+    def test_<%= name %>
+      nums = (1..100).to_a.to_wector
+      assert_equal (nums.<%= name %>), nums.map { |v| v.<%= name %> }
+    end
+    <% end %>
+  end
 end
