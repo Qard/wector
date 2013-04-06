@@ -1,4 +1,5 @@
 # Wector
+[![Build Status](https://travis-ci.org/Qard/wector.png)](https://travis-ci.org/Qard/wector)
 
 Wector does what we all wish the built-in Vector class did; it makes vector math easy by allowing any method of the Numeric interface to be used to combine two arrays or an array and a number.
 
