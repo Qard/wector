@@ -1,0 +1,80 @@
+class Wector < Array
+
+  # 
+  # wector.[]
+  # 
+  def [](*args)
+    args.each do |arg|
+      raise "Non-numeric item" unless arg.is_a?(Integer) or arg.is_a?(Float)
+      unshift arg
+    end
+  end
+
+  # 
+  # wector.~
+  # 
+  def ~
+    self.class.new(map { |i| ~i })
+  end
+  <% [:-, :+].map { |v| v.to_s }.each do |attr_name| %>
+  # 
+  # wector.<%= attr_name %>
+  # 
+  def <%= attr_name %>@
+    self.class.new(map { |i| <%= attr_name %>i })
+  end
+  <% end %>
+  # Operators<% operator_methods.map { |v| v.to_s }.each do |attr_name| %>
+  # 
+  # wector.<%= attr_name %>
+  # 
+  # Arguments:
+  #   other: (Array)
+  # 
+  def <%= attr_name %>(other)
+    if other.is_a? Array
+      raise "Incorrect Dimensions" unless self.size == other.size
+      other = other.dup
+      self.class.new(map { |i| i <%= attr_name %> other.shift })
+    elsif other.is_a?(Integer) or other.is_a?(Float)
+      self.class.new(map { |i| i <%= attr_name %> other })
+    else
+      super
+    end
+  end
+  <% end %>
+  <% comparison_methods.map { |v| v.to_s }.each do |attr_name| %>
+  # 
+  # wector.<%= attr_name %>
+  # 
+  # Arguments:
+  #   other: (Array)
+  # 
+  def <%= attr_name %>(other)
+    if other.is_a? Array
+      raise "Incorrect Dimensions" unless self.size == other.size
+      other = other.dup
+      self.class.new(map { |i| i.<%= attr_name %> other.shift })
+    elsif other.is_a?(Integer) or other.is_a?(Float)
+      self.class.new(map { |i| i.<%= attr_name %> other })
+    else
+      super
+    end
+  end
+  <% end %>
+  <% transform_methods.map { |v| v.to_s }.each do |attr_name| %>
+  # 
+  # wector.<%= attr_name %>
+  # 
+  def <%= attr_name %>
+    self.class.new(map { |i| i.<%= attr_name %> })
+  end
+  <% end %>
+end
+
+# Add interface to convert arrays to vectors
+class Array
+  def to_wector
+    Wector.new(self)
+  end
+end

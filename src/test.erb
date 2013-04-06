@@ -1,0 +1,37 @@
+require 'test/unit'
+require 'wector'
+
+class BasicTest < Test::Unit::TestCase
+
+  def test_construction_and_conversion
+    assert_equal Wector.new([1,2,3]), [1,2,3].to_wector
+  end
+
+  def test_insertion
+    foo = [1,2,3].to_wector
+    foo[3] = 4
+    foo << 5
+    assert_equal foo, [1,2,3,4,5]
+  end
+  <% operator_tests.each do |name, op| %>
+  def test_<%= name %>
+    nums = (1..100).to_a.to_wector
+    assert_equal (nums <%= op %> nums), nums.map { |v| v <%= op %> v }
+  end
+  <% end %><% unary_operator_tests.each do |name, op| %>
+  def test_<%= name %>
+    nums = (1..100).to_a.to_wector
+    assert_equal (<%= op %>nums), nums.map { |v| <%= op %>v }
+  end
+  <% end %><% comparison_methods.each do |name| %>
+  def test_<%= name %>
+    nums = (1..100).to_a.to_wector
+    assert_equal (nums.<%= name %> nums), nums.map { |v| v.<%= name %> v }
+  end
+  <% end %><% transform_methods.each do |name| %>
+  def test_<%= name %>
+    nums = (1..100).to_a.to_wector
+    assert_equal (nums.<%= name %>), nums.map { |v| v.<%= name %> }
+  end
+  <% end %>
+end
