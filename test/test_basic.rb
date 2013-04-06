@@ -187,7 +187,7 @@ class BasicTest < Test::Unit::TestCase
 
   # Only support 1.9+ features when available
   v = RUBY_VERSION.split('.')
-  if v[0].to_i > 1 or v[1] > 8
+  if v[0].to_i > 1 or v[1].to_i > 8
     
     def test_gcd
       nums = (1..100).to_a.to_wector

@@ -49,14 +49,16 @@ unary_operator_tests = {
 	plus: '+'
 }
 
-base_folder = File.join(File.dirname(__FILE__), '..')
+base_folder = File.dirname(__FILE__)
 
 # Generate lib/wector.rb
-File.open(File.join(base_folder, 'lib', 'wector.rb'), 'w') do |file|
-	file.write ERB.new(File.read('wector.erb'), 0, "%<>").result
+File.open(File.join(base_folder, '..', 'lib', 'wector.rb'), 'w') do |file|
+	template = File.read(File.join(base_folder, 'wector.erb'))
+	file.write ERB.new(template, 0, "%<>").result
 end
 
 # Generate tests/basic.rb
-File.open(File.join(base_folder, 'test', 'test_basic.rb'), 'w') do |file|
-	file.write ERB.new(File.read('test.erb'), 0, "%<>").result
+File.open(File.join(base_folder, '..', 'test', 'test_basic.rb'), 'w') do |file|
+	template = File.read(File.join(base_folder, 'test.erb'))
+	file.write ERB.new(template, 0, "%<>").result
 end

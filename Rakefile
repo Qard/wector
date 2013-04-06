@@ -1,3 +1,7 @@
+task :build do
+	`cd src && ruby build.rb`
+end
+
 require "bundler/gem_tasks"
 require 'rake/testtask'
 
